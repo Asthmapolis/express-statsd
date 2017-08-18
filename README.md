@@ -104,3 +104,4 @@ expressStatsd(options);
 with host set to `127.0.0.1` and port set to `8125`.
   - **requestKey** `String` - The key on the `req` object at which to grab
 the key for the statsd logs. Defaults to `req.statsdKey`.
+  - **sendStats** `function` - An optional functional defining the operation when interfacing with the statsD client. For instance, you may want to customize throttling.

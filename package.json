@@ -1,7 +1,7 @@
 {
   "name": "express-statsd",
   "description": "Statsd route monitoring middleware for connect/express",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "homepage": "https://github.com/uber/express-statsd",
   "author": {
     "name": "Matt Morgan",
@@ -17,10 +17,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/uber/express-statsd.git"
+    "url": "git://github.com/Asthmapolis/express-statsd.git"
   },
   "bugs": {
-    "url": "https://github.com/uber/express-statsd/issues"
+    "url": "https://github.com/Asthmapolis/express-statsd/issues"
   },
   "licenses": [
     {
