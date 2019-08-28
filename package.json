@@ -1,48 +1,150 @@
 {
-  "name": "express-statsd",
-  "description": "Statsd route monitoring middleware for connect/express",
+  "name": "@asthmapolis/express-statsd",
   "version": "0.5.0",
-  "homepage": "https://github.com/uber/express-statsd",
-  "author": {
-    "name": "Matt Morgan",
-    "email": "matt@mlmorg.com",
-    "url": "http://mlmorg.com"
+  "description": "Statsd route monitoring middleware for connect/express",
+  "homepage": "https://github.com/asthmapolis/express-statsd#readme",
+  "bugs": {
+    "url": "https://asthmapolis.jira.com/issues"
   },
-  "keywords": [
-    "connect",
-    "express",
-    "statsd",
-    "lynx",
-    "monitoring"
+  "license": "MIT",
+  "author": "Uber",
+  "contributors": [
+    "PropellerHealth"
   ],
+  "files": [
+    "lib/**/*.js"
+  ],
+  "main": "lib/express-statsd.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Asthmapolis/express-statsd.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Asthmapolis/express-statsd/issues"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/uber/express-statsd/blob/master/LICENSE"
-    }
-  ],
-  "main": "lib/express-statsd",
-  "dependencies": {
-    "lynx": "^0.2.0",
-    "obj-extend": "~0.1.0"
-  },
-  "devDependencies": {
-    "chai": "~1.8.1",
-    "express": "~3.4.7",
-    "grunt": "~0.4.2",
-    "grunt-cli": "~0.1.11",
-    "grunt-contrib-jshint": "~0.7.2",
-    "mocha": "~1.15.1",
-    "request": "~2.29.0"
+    "url": "git@github.com:asthmapolis/express-statsd.git"
   },
   "scripts": {
-    "test": "grunt && mocha -R spec"
+    "fmt": "prettier --write '{src,lib,test}/**/*.js'",
+    "lint": "eslint '{src,lib,test}/**/*.js'",
+    "test": "nyc mocha test",
+    "relock": "rm -rf package-lock.json node_modules && npm install --package-lock-only && npm ci",
+    "preversion": "npm run lint && npm run test",
+    "version": "auto-changelog && git add CHANGELOG.md",
+    "postversion": "git push && git push origin v${npm_package_version}"
+  },
+  "dependencies": {
+    "lynx": "0.2.0",
+    "obj-extend": "0.1.0"
+  },
+  "devDependencies": {
+    "auto-changelog": "1.15.0",
+    "chai": "4.2.0",
+    "eslint": "6.2.2",
+    "eslint-config-prettier": "6.1.0",
+    "eslint-plugin-prettier": "3.1.0",
+    "express": "4.17.1",
+    "mocha": "6.2.0",
+    "mochawesome": "4.1.0",
+    "nyc": "14.1.1",
+    "prettier": "1.18.2",
+    "request": "2.88.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "auto-changelog": {
+    "package": "package.json",
+    "output": "CHANGELOG.md",
+    "template": "compact",
+    "unreleased": true,
+    "commitLimit": false,
+    "backfillLimit": false,
+    "sortCommits": "date",
+    "replaceText": {
+      "([A-Z]+-\\d+)": "[`$1`](https://asthmapolis.jira.com/browse/$1)"
+    }
+  },
+  "prettier": {
+    "printWidth": 120,
+    "endOfLine": "lf"
+  },
+  "eslintConfig": {
+    "root": true,
+    "parserOptions": {
+      "ecmaVersion": 2018
+    },
+    "rules": {
+      "no-unused-vars": [
+        2,
+        {
+          "args": "none"
+        }
+      ],
+      "no-bitwise": 2,
+      "no-mixed-spaces-and-tabs": 2,
+      "no-control-regex": 0,
+      "no-useless-escape": 0,
+      "linebreak-style": [
+        2,
+        "unix"
+      ],
+      "strict": [
+        2,
+        "global"
+      ]
+    },
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:prettier/recommended"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "test/**/*.js"
+        ],
+        "rules": {
+          "no-unused-vars": [
+            2,
+            {
+              "args": "none",
+              "varsIgnorePattern": "should"
+            }
+          ]
+        },
+        "env": {
+          "mocha": true
+        }
+      }
+    ]
+  },
+  "nyc": {
+    "reporter": [
+      "html",
+      "text-summary"
+    ],
+    "include": [
+      "src/**/*.js",
+      "lib/**/*.js"
+    ],
+    "report-dir": "./ci/.reports/coverage"
+  },
+  "mocha": {
+    "exit": true,
+    "forbidOnly": true,
+    "forbidPending": true,
+    "retries": "2",
+    "recursive": true,
+    "sort": true,
+    "reporter": "mochawesome",
+    "reporter-option": [
+      "quiet=true",
+      "html=true",
+      "json=false",
+      "reportDir=./ci/.reports/unit",
+      "reportFilename=index",
+      "reportTitle=express-statsd unit test results",
+      "reportPageTitle=express-statsd unit test results",
+      "inline=true"
+    ]
   }
 }
