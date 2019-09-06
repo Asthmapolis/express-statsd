@@ -1,0 +1,21 @@
+###############################################################################
+# DEPENDABOT CONFIGURATIONS
+###############################################################################
+
+#
+# See:
+# https://dependabot.com/docs/config-file/
+#
+
+version: 1
+
+update_configs:
+
+# enable npm updates
+- package_manager: javascript
+  directory: /
+  update_schedule: weekly
+  target_branch: master
+  version_requirement_updates: increase_versions
+
+###############################################################################
