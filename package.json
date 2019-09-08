@@ -33,9 +33,9 @@
     "obj-extend": "0.1.0"
   },
   "devDependencies": {
-    "auto-changelog": "1.15.0",
+    "auto-changelog": "1.16.1",
     "chai": "4.2.0",
-    "eslint": "6.2.2",
+    "eslint": "6.3.0",
     "eslint-config-prettier": "6.2.0",
     "eslint-plugin-prettier": "3.1.0",
     "express": "4.17.1",
