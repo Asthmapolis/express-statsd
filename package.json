@@ -33,16 +33,16 @@
     "obj-extend": "0.1.0"
   },
   "devDependencies": {
-    "auto-changelog": "1.16.1",
+    "auto-changelog": "1.16.2",
     "chai": "4.2.0",
-    "eslint": "6.3.0",
-    "eslint-config-prettier": "6.2.0",
-    "eslint-plugin-prettier": "3.1.0",
+    "eslint": "6.6.0",
+    "eslint-config-prettier": "6.5.0",
+    "eslint-plugin-prettier": "3.1.1",
     "express": "4.17.1",
-    "mocha": "6.2.0",
+    "mocha": "6.2.2",
     "mochawesome": "4.1.0",
     "nyc": "14.1.1",
-    "prettier": "1.18.2",
+    "prettier": "1.19.1",
     "request": "2.88.0"
   },
   "publishConfig": {
