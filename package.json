@@ -43,7 +43,7 @@
     "mochawesome": "4.1.0",
     "nyc": "14.1.1",
     "prettier": "1.19.1",
-    "request": "2.88.0"
+    "request": "2.88.2"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
